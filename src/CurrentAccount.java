@@ -1,10 +1,14 @@
 public class CurrentAccount extends Account {
 
-    public CurrentAccount(Person person, double balance) {
-        super(person, balance);
+    public CurrentAccount(Person person, double balance,String accountType) {
+        super(person, balance,accountType);
     }
 
-    public void withdrawAmount(double amount) {
+    public CurrentAccount(Person person1,Person person2, double balance,String accountType) {
+        super(person1, person2, balance,accountType);
+    }
+
+    public boolean withdrawAmount(double amount) {
 
         if(this.accountBalance >= amount) {
             this.accountBalance -= amount;
@@ -12,17 +16,10 @@ public class CurrentAccount extends Account {
 
         else {
             System.out.println("Insufficient Account Balance!");
-        }
-    }
-
-    public void depositAmount(double amount) {
-
-        if(amount > 0) {
-            this.accountBalance += amount;
+            return false;
         }
 
-        else {
-            System.out.println("Cannot Deposit Negative Amounts");
-        }
+        System.out.println("Amount Withdrawn Successfully!");
+        return true;
     }
 }
